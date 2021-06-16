@@ -1,29 +1,29 @@
 <?php
 
-class Admin_model{
-	private $table = 'admin';
+class Customer_model{
+	private $table = 'customer';
 	private $db;
 
 	public function __construct(){
 		$this->db = new Database;
 	}
 
-	public function getAllAdmin(){
+	public function getAllCustomer(){
 		$this->db->query('SELECT * FROM '. $this->table);
 		return $this->db->resultSet();
 	}
 
-	public function getAdminById($id){
-		$this->db->query('SELECT * FROM '. $this->table.' WHERE id_admin=:id_admin');
-		$this->db->bind('id_admin',$id);
+	public function getCustomerById($id){
+		$this->db->query('SELECT * FROM '. $this->table.' WHERE id_customer=:id_customer');
+		$this->db->bind('id_customer',$id);
 		return $this->db->single();
 	}
 
-	public function tambahDataAdmin($data){
+	public function tambahDataCustomer($data){
 		$query = "INSERT INTO ". $this->table.
-				 " VALUES ('',:nama_admin,:username,:password, :telepon, :alamat)";
+				 " VALUES ('',:nama_customer,:username,:password, :telepon, :alamat)";
 		$this->db->query($query);
-		$this->db->bind('nama_admin',$data['nama_admin']);
+		$this->db->bind('nama_customer',$data['nama_customer']);
 		$this->db->bind('username',$data['username']);
 		$this->db->bind('password',$data['password']);
 		$this->db->bind('telepon',$data['telepon']);
@@ -32,42 +32,42 @@ class Admin_model{
 		return $this->db->rowCount();
 	}	
 
-	public function hapusDataAdmin($id){
+	public function hapusDataCustomer($id){
 		$query = "DELETE FROM ". $this->table.
-				 " WHERE id_admin=:id_admin";
+				 " WHERE id_customer=:id_customer";
 		$this->db->query($query);
-		$this->db->bind('id_admin',$id);
+		$this->db->bind('id_customer',$id);
 		$this->db->execute();
 		return $this->db->rowCount();
 	}	
 
-	public function ubahDataAdmin($data){
+	public function ubahDataCustomer($data){
 		$query = "UPDATE ". $this->table.
-				" SET nama_admin=:nama_admin,username=:username,password=:password, telepon=:telepon, alamat=:alamat".
-				" WHERE id_admin=:id_admin";
+				" SET nama_customer=:nama_customer,username=:username,password=:password, telepon=:telepon, alamat=:alamat".
+				" WHERE id_customer=:id_customer";
 		$this->db->query($query);
-		$this->db->bind('nama_admin',$data['nama_admin']);
+		$this->db->bind('nama_customer',$data['nama_customer']);
 		$this->db->bind('username',$data['username']);
 		$this->db->bind('password',$data['password']);
 		$this->db->bind('telepon',$data['telepon']);
 		$this->db->bind('alamat',$data['alamat']);
-		$this->db->bind('id_admin',$data['id_admin']);
+		$this->db->bind('id_customer',$data['id_customer']);
 		$this->db->execute();
 		return $this->db->rowCount();
 	}	
 
-	public function cariDataAdmin(){
+	public function cariDataCustomer(){
 		$keyword = $_POST['keyword'];
-		$query = 'SELECT * FROM '. $this->table.' WHERE nama LIKE :keyword';
+		$query = 'SELECT * FROM '. $this->table.' WHERE nama_customer LIKE :keyword';
 		$this->db->query($query);
 		$this->db->bind('keyword',"%$keyword%");
 		return $this->db->resultSet();
 	}
 
-    public function getAdminByUsername($result) {
-        $query = "SELECT * FROM 'admin' WHERE username = :username";
+	public function getCustomerByUsername($data) {
+        $query = "SELECT * FROM customer WHERE username = :username";
         $this->db->query($query);
-        $this->db->bind('username', $result['username']);
+        $this->db->bind('username', $data['username']);
         return $this->db->single();
     }
 }

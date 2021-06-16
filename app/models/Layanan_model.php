@@ -41,7 +41,7 @@ class Layanan_model{
 
 	public function ubahDataLayanan($data){
 		$query = "UPDATE ". $this->table.
-				" SET nama_layanan=:nama_layanan,deskripsi=:deskripsi,harga".
+				" SET nama_layanan=:nama_layanan,deskripsi=:deskripsi,harga=:harga".
 				" WHERE id_layanan=:id_layanan";
 		$this->db->query($query);
 		$this->db->bind('nama_layanan',$data['nama_layanan']);
@@ -54,7 +54,7 @@ class Layanan_model{
 
 	public function cariDataLayanan(){
 		$keyword = $_POST['keyword'];
-		$query = 'SELECT * FROM '. $this->table.' WHERE nama LIKE :keyword';
+		$query = 'SELECT * FROM '. $this->table.' WHERE nama_layanan LIKE :keyword';
 		$this->db->query($query);
 		$this->db->bind('keyword',"%$keyword%");
 		return $this->db->resultSet();

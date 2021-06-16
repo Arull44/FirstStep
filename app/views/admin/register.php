@@ -1,138 +1,86 @@
-<?php
+<?php 
 
-    include("app/_config.php");
-    include('userClass.php');
+include 'config.php';
+session_start();
+$err = "";
+$username = "";
+$password = "";
+$ingataku = "";
 
-    $user = new userClass();
+if (isset($_SESSION['username'])) {
+    header("Location: welcome.php");
+}
 
-    $errorMsgReg='';
+if (isset($_POST['submit'])) {
+	$username = $_POST['username'];
+	$password = ($_POST['password']);
+	$ingataku = ($_POST['ingataku']);
+}
+	if ($username == '' or $password == ''){
+		$err .= "<li>Masukkan semua data!</li>";
+	}
+	else{
+	$sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
+	$result = mysqli_query($conn, $sql);
+	if ($result-> num_rows > 0) {
+			$row = mysqli_fetch_assoc($result);
+			$_SESSION['username'] = $row['username'];
 
-    // Encrypt cookie
-    function encryptCookie($value) {
+			 if($ingataku == 1){
+                $cookie_name = "cookie_username";
+                $cookie_value = $username;
+                $cookie_time = time() + (60 * 60 * 24 * 30);
+                setcookie($cookie_name,$cookie_value,$cookie_time,"/");
 
-        $key = hex2bin(openssl_random_pseudo_bytes(4));
-
-        $cipher = "aes-256-cbc";
-        $ivlen = openssl_cipher_iv_length($cipher);
-        $iv = openssl_random_pseudo_bytes($ivlen);
-    
-        $ciphertext = openssl_encrypt($value, $cipher, $key, 0, $iv);
-
-        return( base64_encode($ciphertext . '::' . $iv. '::' .$key) );
-    }
-
-    // Decrypt cookie
-    function decryptCookie( $ciphertext ) {
-        $cipher = "aes-256-cbc";
-
-        list($encrypted_data, $iv,$key) = explode('::', base64_decode($ciphertext));
-        return openssl_decrypt($encrypted_data, $cipher, $key, 0, $iv);
-
-    }
-
-    // Check if $_SESSION or $_COOKIE already set
-    if( isset($_SESSION['id']) ){
-        $url=BASE_URL."dashboard.php";
-        header("Location: $url");
-        exit;
-    } else if( isset($_COOKIE['rememberme'] )){
-        // Decrypt cookie variable value
-        $userid = decryptCookie($_COOKIE['rememberme']);
-
-        // Fetch records
-        $db = getDB();
-        $stmt = $db->prepare("SELECT count(*) as cntUser FROM datalogin WHERE id=:id");
-        $stmt->bindValue(':id', (int)$userid, PDO::PARAM_INT);
-        $stmt->execute(); 
-        $count = $stmt->fetchColumn();
-
-        if( $count > 0 ){
-            $_SESSION['id'] = $userid; 
-            $url=BASE_URL."dashboard.php";
-            header("Location: $url");
-            exit;
-        }
-    }
-    /* Signup Form */
-    if (!empty($_POST['signupSubmit'])) {
-        $username=$_POST['usernameReg'];
-        $password=$_POST['passwordReg'];
-        /* Regular expression check */
-        $username_check = preg_match('~^[A-Za-z0-9_]{3,20}$~i', $username);
-        $password_check = preg_match('~^[A-Za-z0-9!@#$%^&*()_]{6,20}$~i', $password);
-
-        if($username_check && $password_check>0) {
-            
-            if( isset($_POST['rememberme']) ){
-                // Set cookie variables
-                $value = encryptCookie($usernameReg, $passwordReg);
-
-                setcookie ("rememberme",$value,time()+ (3600)); 
+                $cookie_name = "cookie_password";
+                $cookie_value = md5($password);
+                $cookie_time = time() + (60 * 60 * 24 * 30);
+                setcookie($cookie_name,$cookie_value,$cookie_time,"/");
             }
-            $id=$user->userRegistration($username,$password);
-            if($id) {
-                $url=BASE_URL.'dashboard.php';
-                header("Location: $url"); // Page redirecting to dashboard.php 
-            } else {
-                $errorMsgReg="Username atau password sudah ada";
-            }
-        }  else {
-            $errorMsgLogin="Data harus terisi semua";
-        }
-    }
+			header("Location: welcome.php");
+	} else {
+		echo "<script>alert('Kesalahan memasukkan data, silahkan coba kembali.')</script>";
+	}
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <style>
-        body {
-            background-image: url("coding.png");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: scroll;
-        }
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .errorMsg{
-            color: #cc0000;
-            margin-bottom: 3px;
-        }
-    </style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<title>Login FirstStep</title>
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="register.php">REGISTER</a>
-                    <a class="navbar-brand" href="http://localhost/websiteB/dataLogin/">LOGIN</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class="container mb-4">
-        <div class="container py-5">
-            <div class="card shadow mb-4 mt-4">
-                <div class="card-header py-3">
-                    <h2 class="text-dark">Registrasi</h2>
-                    <form action="" method="POST" class="mb-5" name="signup">
-                        <input type="text" class="form-control mb-1" name="usernameReg" placeholder="Username">
-                        <br>
-                        <input type="password" class="form-control mb-1" name="passwordReg" placeholder="Password">
-                        <div class="errorMsg"><?php echo $errorMsgReg; ?></div>
-                        <div>
-                            <input type="checkbox" name="rememberme" value="1" />&nbsp;Remember Me
-                        </div>
-                        <input type="submit" class="btn btn-primary mt-3" name="signupSubmit" value="Sign Up">
-                    </form>			
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<form action="" method="POST" class="login-email">
+			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
+			<center><p>Bergabunglah dengan kami!</p></center>
+			<br>
+			<div class="input-group">
+				<input type="username" placeholder="Username" name="username" required>
+			</div>
+			<div class="input-group">
+				<input type="password" placeholder="Password" name="password" required>
+			</div>
+			<div class="input-group">
+				<button name="submit" class="btn">Login</button>
+			</div>
+			<center>
+				<div>
+					<input type="checkbox" id="login_check" name="ingataku" value="1">
+					<?php if($ingataku == '1') echo "checked"?>
+					<label for="login_check"> Remember Me </label><br>
+				</div>
+			</center>
+			<br>
+			<center><p class="login-register-text">Belum memiliki akun?<a href="register.php"> Register</a></p></center>
+		</form>
+	</div>
 </body>
 </html>
