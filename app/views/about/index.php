@@ -1,6 +1,6 @@
 <div class="container">
-	<h1 class="mt-4">About App</h1>
 	<div class="container">
+		<h1 class="mt-4">About App</h1>
 		<div class="text-center">
 			<img src="img/logo.png" alt="" class="rounded">
 		</div>
@@ -9,4 +9,3 @@
 		memberikan kehidupan sehat dan sejahtera bagi masyarakat Indonesia.</p>
 	</div>
 </div>
-

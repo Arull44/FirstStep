@@ -65,7 +65,7 @@ class Admin_model{
 	}
 
     public function getAdminByUsername($result) {
-        $query = "SELECT * FROM 'admin' WHERE username = :username";
+        $query = "SELECT * FROM `admin` WHERE username = :username";
         $this->db->query($query);
         $this->db->bind('username', $result['username']);
         return $this->db->single();

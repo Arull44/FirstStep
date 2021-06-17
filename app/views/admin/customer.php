@@ -27,6 +27,7 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Username</th>
                         <th scope="col">Telepon</th>
                         <th scope="col">Alamat</th>
@@ -39,11 +40,12 @@
                     <tr>
                         <th scope="row"><?= $no ?></th>
                         <td><?= $cust['nama_customer'];?></td>
+                        <td><?= $cust['email'];?></td>
                         <td><?= $cust['username'];?></td>
                         <td><?= $cust['telepon'];?></td>
                         <td><?= $cust['alamat'];?></td>
                         <td>
-                            <a href="<?= BASEURL;?>/admin/customer/hapus/<?= $cust['id_customer'];?>" class="badge badge-danger float-right ml-1" onclick="return confirm('Yakin?');">hapus</a>  
+                            <a href="<?= BASEURL;?>/admin/customer/hapus/<?= $cust['id_customer'];?>" class="btn btn-danger" onclick="return confirm('Yakin?');">hapus</a>  
                         </td>
                         <?php $no+=1;?>
                     </tr>
