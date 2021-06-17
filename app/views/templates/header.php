@@ -5,8 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="<?= BASEURL;?>/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?=BASEURL;?>/css/style.css">
         <link rel="shortcut icon" href="<?= BASEURL; ?>/img/logo.png" type="image/x-icon">  
         <title><?=$data['judul']; ?></title>
     </head>
@@ -29,15 +29,16 @@
                                 <a class="nav-link" href="<?= BASEURL;?>/layanan">Layanan</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= BASEURL;?>/profil">Profil</a>
+                                <a class="nav-link" href="<?= BASEURL;?>/kontak">Kontak</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= BASEURL;?>/about">About</a>
                             </li>
                         </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Login</button>
-                        </form>
+                        <!-- <form class="form-inline my-2 my-lg-0">
+                            <a href="<?= BASEURL;?>/login"><button class="btn btn-outline-primary my-2 my-sm-0" type="button">Login</button></a>
+                            <a href="<?= BASEURL;?>/logout"><button class="btn btn-outline-primary my-2 my-sm-0" type="button">Logout</button></a>
+                        </form> -->
                     </div>
                 </nav>
             </div>

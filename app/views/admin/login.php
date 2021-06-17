@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin - <?= $data['title']; ?></title>
+    <title>Admin - <?= $data['judul']; ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= BASEURL ?>/admin_public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-gradient-dark">
 
     <div class="container">
 
@@ -42,15 +42,17 @@
                     </div>
                     <form action="<?= BASEURL.'/admin/login/do'; ?>" method="post">
                         <div class="form-group">
-                        <input type="text" class="form-control" value="<?= (isset($_SESSION['username'])) ? $_SESSION['username'] : ''?>" id="username" name="username" aria-describedby="emailHelp" placeholder="Username...">
+                            <input type="text" class="form-control" value="<?= (isset($_SESSION['username'])) ? $_SESSION['username'] : ''?>" id="username" name="username" aria-describedby="emailHelp" placeholder="Username" required>
                         </div>
                         <div class="form-group">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember Me</label>
                         </div>
 
-                        <button type="submit" class="btn btn-block btn-primary">Login</button>
-                        
-
+                        <button type="submit" class="btn btn-block btn-primary" name="submitLogin">Login</button>
                     </form>
                         
                     </div>
