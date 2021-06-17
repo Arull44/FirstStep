@@ -15,21 +15,26 @@
             <div class="card">
               <div class="card-body">
                 <div class="alert alert-success" role="alert">
-                  Punya saran, pertanyaan, masukan, kritik, cerita permasalahan atau menemukan bugs di website ini?
+                  Punya saran, pertanyaan, masukan, kritik, cerita permasalahan anda atau menemukan bugs di website ini?
                 </div>
-                <form>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <?php Flasher::flash(); ?>
+                    </div>
+                </div>  
+                <form action="<?= BASEURL;?>/kontak/tambah" method="POST">
                     <div class="form-group">
-                      <label for="nama">Nama</label>
-                      <input type="text" class="form-control" id="nama" placeholder="Input Nama" required>
+                      <label for="nama_customer">Nama</label>
+                      <input type="text" class="form-control" id="nama_customer" name="nama_customer"placeholder="Input Nama" required>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Input Email" required>
+                      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Input Email" required>
                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                       <label for="telepon">Telepon</label>
-                      <input type="text" class="form-control" id="telepon" placeholder="Input telepon" required>
+                      <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Input telepon" required>
                     </div>
                     <div class="form-group">
                       <label for="alamat">Alamat</label>

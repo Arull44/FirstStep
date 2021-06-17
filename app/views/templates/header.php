@@ -35,10 +35,6 @@
                                 <a class="nav-link" href="<?= BASEURL;?>/about">About</a>
                             </li>
                         </ul>
-                        <!-- <form class="form-inline my-2 my-lg-0">
-                            <a href="<?= BASEURL;?>/login"><button class="btn btn-outline-primary my-2 my-sm-0" type="button">Login</button></a>
-                            <a href="<?= BASEURL;?>/logout"><button class="btn btn-outline-primary my-2 my-sm-0" type="button">Logout</button></a>
-                        </form> -->
                     </div>
                 </nav>
             </div>

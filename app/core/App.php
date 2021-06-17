@@ -15,7 +15,7 @@ class App {
                 $this->controller = 'Login';
                 unset($url[0]);
                 if ( isset($url[1]) ) {
-                    if ( !isset($_SESSION['petugas']) ) {
+                    if ( !isset($_SESSION['admin']) ) {
                         $this->controller = 'Login';
                         unset($url[1]);
                     } else {

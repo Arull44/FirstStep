@@ -32,12 +32,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<?= BASEURL;?>/admin/layanan">Layanan</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= BASEURL;?>/admin/pesanan">Pesanan</a>
-                        </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Logout</button>
+                        <a href="<?= BASEURL;?>/admin/logout" class="btn btn-outline-primary my-2 my-sm-0">Logout</a>
                     </form>
                 </div>
             </nav>

@@ -3,7 +3,7 @@
 class Layanan extends Controller {
 
     public function index() {
-        $data['judul'] = 'Halaman Layanan';
+        $data['judul'] = 'Layanan';
 		$data['layanan'] = $this->model('Layanan_model')->getAllLayanan();
 		$this->view('admin/templates/header',$data);
 		$this->view('admin/layanan',$data);

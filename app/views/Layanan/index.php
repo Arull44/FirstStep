@@ -13,9 +13,6 @@
                         <h5 class="card-title">Rp<?= $lyn['harga'];?></h5>
                         <p class="card-text"><?= $lyn['deskripsi'];?></p>
                     </div>
-                    <!-- <div class="card-footer text-muted">
-                        2 days ago
-                    </div> -->
                 </div>
             <?php endforeach;?>
         </div>

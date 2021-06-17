@@ -21,13 +21,13 @@ class Customer_model{
 
 	public function tambahDataCustomer($data){
 		$query = "INSERT INTO ". $this->table.
-				 " VALUES ('',:nama_customer,:username,:password, :telepon, :alamat)";
+				 " VALUES ('',:nama_customer, :email, :telepon, :alamat, :cerita)";
 		$this->db->query($query);
 		$this->db->bind('nama_customer',$data['nama_customer']);
-		$this->db->bind('username',$data['username']);
-		$this->db->bind('password',$data['password']);
+		$this->db->bind('email',$data['email']);
 		$this->db->bind('telepon',$data['telepon']);
 		$this->db->bind('alamat',$data['alamat']);
+		$this->db->bind('cerita',$data['cerita']);
 		$this->db->execute();
 		return $this->db->rowCount();
 	}	
@@ -41,21 +41,6 @@ class Customer_model{
 		return $this->db->rowCount();
 	}	
 
-	public function ubahDataCustomer($data){
-		$query = "UPDATE ". $this->table.
-				" SET nama_customer=:nama_customer,username=:username,password=:password, telepon=:telepon, alamat=:alamat".
-				" WHERE id_customer=:id_customer";
-		$this->db->query($query);
-		$this->db->bind('nama_customer',$data['nama_customer']);
-		$this->db->bind('username',$data['username']);
-		$this->db->bind('password',$data['password']);
-		$this->db->bind('telepon',$data['telepon']);
-		$this->db->bind('alamat',$data['alamat']);
-		$this->db->bind('id_customer',$data['id_customer']);
-		$this->db->execute();
-		return $this->db->rowCount();
-	}	
-
 	public function cariDataCustomer(){
 		$keyword = $_POST['keyword'];
 		$query = 'SELECT * FROM '. $this->table.' WHERE nama_customer LIKE :keyword';
@@ -64,10 +49,4 @@ class Customer_model{
 		return $this->db->resultSet();
 	}
 
-	public function getCustomerByUsername($data) {
-        $query = "SELECT * FROM customer WHERE username = :username";
-        $this->db->query($query);
-        $this->db->bind('username', $data['username']);
-        return $this->db->single();
-    }
 }

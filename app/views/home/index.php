@@ -16,7 +16,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-lg-6 col-12 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="about-thumb">
-                            <img src="img/mental.jpg" class="img-fluid img-thumbnail" alt="about">
+                            <img src="<?=BASEURL;?>/img/potrait-mental.jpg" class="img-fluid img-thumbnail" alt="about">
                         </div>
                     </div>
                     <div class="col-lg-6 col-12 wow fadeInUp" data-wow-delay="0.4s">
@@ -43,7 +43,7 @@
                 <div class="row justify-content-center align-items-center flex-row-reverse">
                     <div class="col-lg-6 col-12 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="about-thumb">
-                            <img src="assets/images/about/home-3/02.png" alt="about">
+                            <img src="<?=BASEURL;?>/assets/images/about/home-3/02.png" alt="about">
                         </div>
                     </div>
                     <div class="col-lg-6 col-12 wow fadeInUp" data-wow-delay="0.4s">
@@ -93,6 +93,67 @@
     </section>
     <!-- about section start here -->
 
+    <!-- about section start here -->
+    <section class="about-section style-3 bg-about padding-tb" id="about">
+        <div class="p-3 mb-2 bg-white text-dark">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-6 col-12 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="about-thumb">
+                            <img src="<?=BASEURL;?>/img/mental.jpg" class="img-fluid img-thumbnail" alt="about">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="about-content">
+                            <div class="ab-title">
+                                <span>Jenis Kesehatan Mental</span>
+                                <h3>Beberapa yang paling sering terjadi</h3>
+                                <ul class="lab-ul">
+                                    <li>
+                                        <div class="ab-content">
+                                            <h6>Depresi</h6>
+                                            <p>Depresi merupakan gangguan suasana hati yang menyebabkan penderitanya terus-menerus merasa sedih. 
+                                            Berbeda dengan kesedihan biasa yang berlangsung selama beberapa hari, perasaan sedih pada depresi bisa berlangsung hingga berminggu-minggu atau berbulan-bulan.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ab-content">
+                                            <h6>Skizofrenia</h6>
+                                            <p>Skizofrenia adalah gangguan mental yang menimbulkan keluhan halusinasi, delusi, 
+                                            serta kekacauan berpikir dan berperilaku. Skizofrenia membuat penderitanya tidak bisa membedakan antara kenyataan dengan pikirannya sendiri.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ab-content">
+                                            <h6>Gangguan kecemasan</h6>
+                                            <p>Gangguan kecemasan merupakan gangguan mental yang membuat penderitanya merasa cemas dan takut secara berlebihan dan terus menerus dalam menjalani aktivitas sehari-hari. 
+                                            Penderita gangguan kecemasan dapat mengalami serangan panik yang berlangsung lama dan sulit dikendalikan.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ab-content">
+                                            <h6>Gangguan bipolar</h6>
+                                            <p>Gangguan bipolar adalah jenis gangguan mental yang ditandai dengan perubahan suasana hati. 
+                                            Penderita gangguan bipolar dapat merasa sangat sedih dan putus asa dalam periode tertentu, kemudian menjadi sangat senang dalam periode yang lain.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="ab-content">
+                                            <h6>Gangguan tidur</h6>
+                                            <p>Gangguan tidur merupakan perubahan pada pola tidur yang sampai mengganggu kesehatan dan kualitas hidup penderitanya. 
+                                            Beberapa contoh gangguan tidur adalah sulit tidur (insomnia), mimpi buruk (parasomnia), atau sangat mudah tertidur (narkolepsi).</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about section start here -->
+
     <!-- Awal Content -->
     <div class="p-3 mb-2 bg-white text-dark">
         <div class="container">
@@ -102,7 +163,7 @@
             <div class="row">
                 <div class="col-md-3 mb-2">
                     <div class="card">
-                        <img src="img/webinar.jpg" class="card-img-top" alt="Gambar">
+                        <img src="<?=BASEURL;?>/img/webinar.jpg" class="card-img-top" alt="Gambar">
                         <div class="card-body">
                             <h6 class="card-title text-info text-center">Webinar</h6>
                             <!-- <h6 class="card-text"><a href="#" class="text-primary">#1 - Tutorial Bootstrap 4 - Bahasa Indonesia</h6> -->
@@ -111,7 +172,7 @@
                 </div>
                 <div class="col-md-3 mb-2">
                     <div class="card">
-                        <img src="img/kelas online.jpg" class="card-img-top" alt="Gambar">
+                        <img src="<?=BASEURL;?>/img/kelas online.jpg" class="card-img-top" alt="Gambar">
                         <div class="card-body">
                             <h6 class="card-title text-info text-center">Kelas Online</h6>
                             <!-- <h6 class="card-text"><a href="#" class="text-primary">#1 - Tutorial Bootstrap 4 - Bahasa Indonesia</h6> -->
@@ -120,7 +181,7 @@
                 </div>
                 <div class="col-md-3 mb-2">
                     <div class="card">
-                        <img src="img/mentoring.jpg" class="card-img-top" alt="Gambar">
+                        <img src="<?=BASEURL;?>/img/mentoring.jpg" class="card-img-top" alt="Gambar">
                         <div class="card-body">
                             <h6 class="card-title text-info text-center">Mentoring</h6>
                             <!-- <h6 class="card-text"><a href="#" class="text-primary">#1 - Tutorial Bootstrap 4 - Bahasa Indonesia</h6> -->
@@ -129,7 +190,7 @@
                 </div>
                 <div class="col-md-3 mb-2">
                     <div class="card">
-                        <img src="img/konseling1.jpg" class="card-img-top" alt="Gambar">
+                        <img src="<?=BASEURL;?>/img/konseling1.jpg" class="card-img-top" alt="Gambar">
                         <div class="card-body">
                             <h6 class="card-title text-info text-center">Konseling</h6>
                             <!-- <h6 class="card-text"><a href="#" class="text-primary">#1 - Tutorial Bootstrap 4 - Bahasa Indonesia</h6> -->
@@ -146,7 +207,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <img src="img/lady gaga.jpg" class="img-thumbnail">
+                    <img src="<?=BASEURL;?>/img/lady gaga.jpg" class="img-thumbnail">
                 </div>
                 <div class="col-md-9">
                     <h2>Lady Gaga</h2>
@@ -171,12 +232,10 @@
                     <button type="button" class="btn btn-primary">Quote</button>
                 </div>
                 <div class="col-md-3">
-                    <img src="img/obama.jpg" class="img-thumbnail">
+                    <img src="<?=BASEURL;?>/img/obama.jpg" class="img-thumbnail">
                 </div>
             </div>
         </div>    
     </div>
     <!-- Akhir Jumbotron 3 -->
-
-
 
